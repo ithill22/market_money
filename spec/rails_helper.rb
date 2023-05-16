@@ -77,3 +77,25 @@ Shoulda::Matchers.configure do |config|
      with.library :rails
   end
 end
+
+def test_data
+  @market_1 = create(:market)
+  @market_2 = create(:market)
+  @market_3 = create(:market)
+  @market_4 = create(:market)
+  @market_5 = create(:market)
+
+  @vendor_1 = create(:vendor)
+  @vendor_2 = create(:vendor)
+  @vendor_3 = create(:vendor)
+  @vendor_4 = create(:vendor)
+  @vendor_5 = create(:vendor)
+
+  @market_vendor_1 = create(:market_vendor, market: @market_1, vendor: @vendor_1)
+  @market_vendor_2 = create(:market_vendor, market: @market_1, vendor: @vendor_2)
+  @market_vendor_3 = create(:market_vendor, market: @market_1, vendor: @vendor_3)
+  @market_vendor_4 = create(:market_vendor, market: @market_1, vendor: @vendor_4)
+  @market_vendor_5 = create(:market_vendor, market: @market_1, vendor: @vendor_5)
+  @market_vendor_6 = create(:market_vendor, market: @market_2, vendor: @vendor_1)
+  @market_vendor_7 = create(:market_vendor, market: @market_2, vendor: @vendor_2)
+end
