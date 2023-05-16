@@ -3,7 +3,7 @@ FactoryBot.define do
     name { Faker::Company.name }
     street { Faker::Address.street_name }
     city { Faker::Address.city }
-    country { 'US'}
+    county { Faker::Address.community }
     state { Faker::Address.state_abbr }
     zip { Faker::Address.zip }
     lat { Faker::Address.latitude }
