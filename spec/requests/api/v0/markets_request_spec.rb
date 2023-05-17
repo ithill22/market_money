@@ -22,26 +22,28 @@ RSpec.describe 'Markets API' do
         expect(market).to have_key(:id)
         expect(market).to have_key(:type)
         expect(market).to have_key(:attributes)
-        expect(market[:attributes]).to be_a Hash
-        expect(market[:attributes]).to have_key(:name)
-        expect(market[:attributes]).to have_key(:street)
-        expect(market[:attributes]).to have_key(:city)
-        expect(market[:attributes]).to have_key(:county)
-        expect(market[:attributes]).to have_key(:state)
-        expect(market[:attributes]).to have_key(:zip)
-        expect(market[:attributes]).to have_key(:lat)
-        expect(market[:attributes]).to have_key(:lon)
-        expect(market[:attributes]).to have_key(:vendor_count)
+
+        attributes = market[:attributes]
+        expect(attributes).to be_a Hash
+        expect(attributes).to have_key(:name)
+        expect(attributes).to have_key(:street)
+        expect(attributes).to have_key(:city)
+        expect(attributes).to have_key(:county)
+        expect(attributes).to have_key(:state)
+        expect(attributes).to have_key(:zip)
+        expect(attributes).to have_key(:lat)
+        expect(attributes).to have_key(:lon)
+        expect(attributes).to have_key(:vendor_count)
         
-        expect(market[:attributes][:name]).to be_a String
-        expect(market[:attributes][:street]).to be_a String
-        expect(market[:attributes][:city]).to be_a String
-        expect(market[:attributes][:county]).to be_a String
-        expect(market[:attributes][:state]).to be_a String
-        expect(market[:attributes][:zip]).to be_a String
-        expect(market[:attributes][:lat]).to be_a String
-        expect(market[:attributes][:lon]).to be_a String
-        expect(market[:attributes][:vendor_count]).to be_an Integer
+        expect(attributes[:name]).to be_a String
+        expect(attributes[:street]).to be_a String
+        expect(attributes[:city]).to be_a String
+        expect(attributes[:county]).to be_a String
+        expect(attributes[:state]).to be_a String
+        expect(attributes[:zip]).to be_a String
+        expect(attributes[:lat]).to be_a String
+        expect(attributes[:lon]).to be_a String
+        expect(attributes[:vendor_count]).to be_an Integer
       end
     end
 
@@ -57,26 +59,28 @@ RSpec.describe 'Markets API' do
         expect(json[:data]).to have_key(:id)
         expect(json[:data]).to have_key(:type)
         expect(json[:data]).to have_key(:attributes)
-        expect(json[:data][:attributes]).to be_a Hash
-        expect(json[:data][:attributes]).to have_key(:name)
-        expect(json[:data][:attributes]).to have_key(:street)
-        expect(json[:data][:attributes]).to have_key(:city)
-        expect(json[:data][:attributes]).to have_key(:county)
-        expect(json[:data][:attributes]).to have_key(:state)
-        expect(json[:data][:attributes]).to have_key(:zip)
-        expect(json[:data][:attributes]).to have_key(:lat)
-        expect(json[:data][:attributes]).to have_key(:lon)
-        expect(json[:data][:attributes]).to have_key(:vendor_count)
 
-        expect(json[:data][:attributes][:name]).to eq(@market_1.name)
-        expect(json[:data][:attributes][:street]).to eq(@market_1.street)
-        expect(json[:data][:attributes][:city]).to eq(@market_1.city)
-        expect(json[:data][:attributes][:county]).to eq(@market_1.county)
-        expect(json[:data][:attributes][:state]).to eq(@market_1.state)
-        expect(json[:data][:attributes][:zip]).to eq(@market_1.zip)
-        expect(json[:data][:attributes][:lat]).to eq(@market_1.lat)
-        expect(json[:data][:attributes][:lon]).to eq(@market_1.lon)
-        expect(json[:data][:attributes][:vendor_count]).to eq(@market_1.vendor_count)
+        attributes = json[:data][:attributes]
+        expect(attributes).to be_a Hash
+        expect(attributes).to have_key(:name)
+        expect(attributes).to have_key(:street)
+        expect(attributes).to have_key(:city)
+        expect(attributes).to have_key(:county)
+        expect(attributes).to have_key(:state)
+        expect(attributes).to have_key(:zip)
+        expect(attributes).to have_key(:lat)
+        expect(attributes).to have_key(:lon)
+        expect(attributes).to have_key(:vendor_count)
+
+        expect(attributes[:name]).to eq(@market_1.name)
+        expect(attributes[:street]).to eq(@market_1.street)
+        expect(attributes[:city]).to eq(@market_1.city)
+        expect(attributes[:county]).to eq(@market_1.county)
+        expect(attributes[:state]).to eq(@market_1.state)
+        expect(attributes[:zip]).to eq(@market_1.zip)
+        expect(attributes[:lat]).to eq(@market_1.lat)
+        expect(attributes[:lon]).to eq(@market_1.lon)
+        expect(attributes[:vendor_count]).to eq(@market_1.vendor_count)
       end
 
       it 'If market does not exist, returns 404' do
