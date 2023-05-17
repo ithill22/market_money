@@ -53,14 +53,14 @@ RSpec.describe 'Markets API' do
 
         expect(response).to be_successful
 
-        json = JSON.parse(response.body, symbolize_names: true)
+        data = JSON.parse(response.body, symbolize_names: true)[:data]
 
-        expect(json[:data]).to be_a Hash
-        expect(json[:data]).to have_key(:id)
-        expect(json[:data]).to have_key(:type)
-        expect(json[:data]).to have_key(:attributes)
+        expect(data).to be_a Hash
+        expect(data).to have_key(:id)
+        expect(data).to have_key(:type)
+        expect(data).to have_key(:attributes)
 
-        attributes = json[:data][:attributes]
+        attributes = data[:attributes]
         expect(attributes).to be_a Hash
         expect(attributes).to have_key(:name)
         expect(attributes).to have_key(:street)

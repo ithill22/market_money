@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_155211) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_162316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,9 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_155211) do
     t.string "description"
     t.string "contact_name"
     t.string "contact_phone"
-    t.boolean "credit_accepted"
+    t.boolean "credit_accepted", default: false
   end
 
   add_foreign_key "market_vendors", "markets"
-  add_foreign_key "market_vendors", "vendors"
+  add_foreign_key "market_vendors", "vendors", on_delete: :cascade
 end
