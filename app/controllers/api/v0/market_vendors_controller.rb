@@ -18,6 +18,15 @@ class Api::V0::MarketVendorsController < ApplicationController
       render json: ErrorSerializer.serialize("Couldn't find Market with 'id'=#{params[:market_id]}"), status: 404
     end
   end  
+
+  def destroy
+    market_vendor = MarketVendor.find_by(market_id: params[:market_id], vendor_id: params[:vendor_id])
+    if market_vendor
+      market_vendor.destroy
+    else
+      render json: ErrorSerializer.serialize("Couldn't find MarketVendor with 'id'=#{params[:id]}"), status: 404
+    end
+  end
 end
 
   

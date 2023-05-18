@@ -78,4 +78,37 @@ RSpec.describe 'Market Vendors API' do
       expect(error[:detail]).to eq("MarketVendor relationship already exists")
     end
   end
+
+  describe 'Delete a market vendor' do
+    it 'deletes a market vendor' do
+      market_vendor_params = {
+        "market_id": @market_1.id,
+        "vendor_id": @vendor_1.id
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      delete "/api/v0/market_vendors", headers: headers, params: JSON.generate(market_vendor_params)
+      
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
+
+      expect(MarketVendor.count).to eq(6)
+    end
+
+    it 'returns 404 if market/vendor relationship does not exist' do
+      market_vendor_params = {
+        "market_id": @market_5.id,
+        "vendor_id": @vendor_5.id
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      delete "/api/v0/market_vendors", headers: headers, params: JSON.generate(market_vendor_params)
+
+      expect(response.status).to eq(404)
+
+      error = JSON.parse(response.body, symbolize_names: true)[:errors][0]
+
+      expect(error[:detail]).to eq("Couldn't find MarketVendor with 'id'=#{market_vendor_params[:id]}")
+    end
+  end
 end
