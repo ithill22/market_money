@@ -201,4 +201,63 @@ RSpec.describe 'Vendors API' do
       expect(error[:detail]).to eq("Couldn't find Vendor with 'id'=1000000")  
     end
   end
+
+  describe 'Update a vendor' do
+    it 'can update a vendor' do
+      vendor_params = {
+        "name": "Kael's Kale",
+        "credit_accepted": false
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v0/vendors/#{@vendor_1.id}", headers: headers, params: JSON.generate(vendor: vendor_params)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+
+      data = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(data).to be_a Hash
+      expect(data).to have_key(:id)
+      expect(data).to have_key(:type)
+      expect(data).to have_key(:attributes)
+
+      attributes = data[:attributes]
+      expect(attributes).to be_a Hash
+      expect(attributes).to have_key(:name)
+      expect(attributes[:name]).to eq("Kael's Kale")
+      expect(attributes).to have_key(:credit_accepted)
+      expect(attributes[:credit_accepted]).to eq(false)
+    end
+
+    it 'If vendor does not exist, returns 404' do
+      vendor_params = {
+        "name": "Kael's Kale",
+        "credit_accepted": false
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v0/vendors/#{100000}", headers: headers, params: JSON.generate(vendor: vendor_params)
+
+      expect(response.status).to eq(404)
+      
+      error = JSON.parse(response.body, symbolize_names: true)[:errors][0]
+      expect(error[:detail]).to eq("Couldn't find Vendor with 'id'=100000")
+    end
+
+    it 'If vendor is missing information, returns 400' do
+      vendor_params = {
+        "name": "",
+        "credit_accepted": false
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v0/vendors/#{@vendor_1.id}", headers: headers, params: JSON.generate(vendor: vendor_params)
+
+      expect(response.status).to eq(400)
+
+      error = JSON.parse(response.body, symbolize_names: true)[:errors][0]
+      expect(error[:detail]).to eq("Information missing, could not update Vendor")
+    end
+  end
 end

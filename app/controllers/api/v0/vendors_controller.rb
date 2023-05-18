@@ -27,6 +27,18 @@ class Api::V0::VendorsController < ApplicationController
     end
   end
 
+  def update
+    vendor = Vendor.find_by(id: params[:id])
+    vendor.credit_accepted = false unless [true, false].include? params[:vendor][:credit_accepted]
+    if vendor.nil?
+      render json: ErrorSerializer.serialize("Couldn't find Vendor with 'id'=#{params[:id]}"), status: 404
+    elsif vendor.update(vendor_params)
+      render json: VendorSerializer.new(vendor), status: 200
+    else
+      render json: ErrorSerializer.serialize("Information missing, could not update Vendor"), status: 400
+    end
+  end
+
   def destroy
     vendor = Vendor.find_by(id: params[:id])
     if vendor.nil?
