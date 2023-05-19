@@ -173,5 +173,35 @@ RSpec.describe 'Markets API' do
         expect(json[:message]).to eq("No markets found")
       end
     end
+
+    describe 'Send nearest ATMs', :vcr do
+      it 'sends the nearest ATMs to a market' do
+        market = Market.create!(name: 'Union Station Farmers Market', street: '1701 Wynkoop St', city: 'Denver', county: 'Denver', state: 'CO', zip: '80202', lat: '39.752831', lon: '-104.998331')
+        
+        get "/api/v0/markets/#{market.id}/nearest_atms"
+        
+        expect(response).to be_successful
+        expect(response.status).to eq(200)
+        
+        json = JSON.parse(response.body, symbolize_names: true)
+        expect(json).to be_a Hash
+        expect(json).to have_key(:data)
+        
+        data = json[:data]
+        expect(data).to be_an Array
+        expect(data.count).to eq(10)
+      end
+
+      it 'returns 404 if market does not exist' do
+        get "/api/v0/markets/#{1000000}/nearest_atms"
+
+        expect(response.status).to eq(404)
+        
+        error = JSON.parse(response.body, symbolize_names: true)[:errors][0]
+        expect(error).to be_a Hash
+        expect(error).to have_key(:detail)
+        expect(error[:detail]).to eq("Couldn't find Market")
+      end
+    end
   end
 end

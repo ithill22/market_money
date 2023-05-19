@@ -1,6 +1,6 @@
 class AtmService
 
-  def get_atm(lat, lon)
+  def get_atms(lat, lon)
     get_url("/search/2/poiSearch/atm.json?lat=#{lat}&lon=#{lon}&radius=1000&limit=10")
   end
 
@@ -11,7 +11,7 @@ class AtmService
 
   def conn
     Faraday.new(url: 'https://api.tomtom.com') do |f|
-      f.params['key'] = ENV['TOMTOM_API_KEY']
+      f.params['key'] = 'pLHmZIQCIER9z0l6XhhlGA20FY5xQIbu'
     end
   end
 end

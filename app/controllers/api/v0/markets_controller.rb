@@ -25,8 +25,15 @@ class Api::V0::MarketsController < ApplicationController
     end
   end
 
-  def nearest_atm
-    
+  def nearest_atms
+    market = Market.find_by(id: params[:id])
+    if market
+      atm_facade = AtmFacade.new(market)
+      atms = atm_facade.atm_details
+      render json: AtmSerializer.new(atms)
+    else
+      render json: ErrorSerializer.serialize("Couldn't find Market"), status: 404
+    end
   end
 
   private
