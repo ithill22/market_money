@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 19 May 2023 04:54:07 GMT
+      - Fri, 19 May 2023 05:00:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Vary:
@@ -27,13 +27,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Tracking-Id:
-      - a139299b-3305-41cf-b430-dcf139a6f444
+      - bdd3be78-9d4f-433e-990b-d9b635d81a08
       Access-Control-Expose-Headers:
       - Tracking-ID
       X-Apigee.target-Latency:
-      - '61'
+      - '15'
       X-Envoy-Upstream-Service-Time:
-      - '71'
+      - '26'
       Server:
       - tomtom
       X-Tomtom-Processed-By:
@@ -42,7 +42,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"summary":{"query":"atm","queryType":"NON_NEAR","queryTime":57,"numResults":10,"offset":0,"totalResults":92,"fuzzyLevel":1,"geoBias":{"lat":39.752831,"lon":-104.998331},"geobiasCountry":"US"},"results":[{"type":"POI","id":"LptaiHox1LzjSpAp5vgOGQ","score":0.9854305387,"dist":68.693031,"info":"search:ta:840089002931103-US","matchConfidence":{"score":1},"poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
+      string: '{"summary":{"query":"atm","queryType":"NON_NEAR","queryTime":10,"numResults":10,"offset":0,"totalResults":92,"fuzzyLevel":1,"geoBias":{"lat":39.752831,"lon":-104.998331},"geobiasCountry":"US"},"results":[{"type":"POI","id":"LptaiHox1LzjSpAp5vgOGQ","score":0.9854305387,"dist":68.693031,"info":"search:ta:840089002931103-US","matchConfidence":{"score":1},"poi":{"name":"ATM","categorySet":[{"id":7397}],"categories":["cash
         dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
         dispenser"}]}]},"address":{"streetNumber":"1601","streetName":"17th Street","municipalitySubdivision":"Downtown
         Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1203","countryCode":"US","country":"United
@@ -97,5 +97,5 @@ http_interactions:
         Denver","municipality":"Denver","countrySecondarySubdivision":"Denver","countrySubdivision":"CO","countrySubdivisionName":"Colorado","postalCode":"80202","extendedPostalCode":"80202-1212","countryCode":"US","country":"United
         States","countryCodeISO3":"USA","freeformAddress":"1634 18th Street, Denver,
         CO 80202","localName":"Denver"},"position":{"lat":39.753359,"lon":-104.998541},"viewport":{"topLeftPoint":{"lat":39.75426,"lon":-104.99971},"btmRightPoint":{"lat":39.75246,"lon":-104.99737}},"entryPoints":[{"type":"main","position":{"lat":39.75356,"lon":-104.99827}},{"type":"main","position":{"lat":39.75359,"lon":-104.99831}}]}]}'
-  recorded_at: Fri, 19 May 2023 04:54:07 GMT
+  recorded_at: Fri, 19 May 2023 05:00:17 GMT
 recorded_with: VCR 6.1.0

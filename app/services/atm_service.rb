@@ -4,6 +4,7 @@ class AtmService
     get_url("/search/2/poiSearch/atm.json?lat=#{lat}&lon=#{lon}&radius=1000&limit=10")
   end
 
+  private
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

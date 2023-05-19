@@ -10,6 +10,7 @@ class AtmFacade
     end
   end
 
+  private
   def service
     _service ||= AtmService.new
   end
