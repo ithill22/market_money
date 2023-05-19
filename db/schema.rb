@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_162316) do
     t.string "description"
     t.string "contact_name"
     t.string "contact_phone"
-    t.boolean "credit_accepted", default: false
+    t.boolean "credit_accepted"
   end
 
   add_foreign_key "market_vendors", "markets"
