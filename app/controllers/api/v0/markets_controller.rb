@@ -37,10 +37,6 @@ class Api::V0::MarketsController < ApplicationController
   end
 
   private
-  def market_params
-    params.require(:market).permit(:name, :street, :city, :county, :state, :zip, :lat, :lon)
-  end
-
   def valid_params?
     return false if params[:city].present? && !params[:state].present?
     return false if !params[:state].present? && !params[:name].present?
