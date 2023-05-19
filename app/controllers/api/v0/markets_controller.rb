@@ -25,6 +25,10 @@ class Api::V0::MarketsController < ApplicationController
     end
   end
 
+  def nearest_atm
+    
+  end
+
   private
   def market_params
     params.require(:market).permit(:name, :street, :city, :county, :state, :zip, :lat, :lon)
